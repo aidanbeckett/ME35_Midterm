@@ -8,7 +8,7 @@ def Step(temp):
         start_time = time.time()
         msg = '('+ str(theta1[i]) + ',' + str(theta2[i]) + ')'
         # Send the angles in the correct format to the broker
-        temp.publish(tell,msg)
+        temp.publish(topic,msg)
         
         if i % 20 == 0:
             # Publish to the adafruit dashboard once every second to avoid throttle limits
@@ -34,8 +34,7 @@ def on_message(client, userdata, msg):
 
 address = '10.247.55.238'
 # MQTT topics
-tell = 'Aidan/angles' 
-listen = 'Aidan/listen'
+topic = 'angles' 
 
 # Set up adafruit MQTT
 client = mqtt.Client()
